@@ -6,7 +6,10 @@
 package sys.dao;
 
 import java.util.List;
+import sys.model.Tbdepartamento;
 import sys.model.Tbempleado;
+import sys.model.Tbmunicipio;
+import sys.model.Tbpais;
 
 /**
  *
@@ -18,4 +21,13 @@ public interface empleadoDao {
     
     //
     public void nuevoEmpleado(Tbempleado tbempleado);
+    //
+    public void modificarEmpleado(Tbempleado tbempleado);
+    //
+    public void eliminarEmpleado(Tbempleado tbempleado);
+    
+    //metodos para llenar dinamicamente los selectOnMenu
+    public List<Tbpais> listarPaises();
+    public List<Tbdepartamento> listarDepartamentos(Tbempleado empleado);
+    public List<Tbmunicipio> listarMunicipios(Tbempleado empleado);
 }
