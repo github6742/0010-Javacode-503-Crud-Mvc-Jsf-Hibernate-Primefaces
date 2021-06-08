@@ -80,15 +80,15 @@
             <p:dataTable id="tablaMostrarEmpleados" var="emp" value="#{empleadoBean.listar}"
                          emptyMessage="No existen datos de empleados" style="font-size: 12px">
 
-                <p:column headerText="Id Empleado">
+                <p:column headerText="Id Empleado" filterBy="#{emp.idEmpleado}">
                     <h:outputText value="#{emp.idEmpleado}"/>
                 </p:column>
 
-                <p:column headerText="Nombres del Empleado">
+                <p:column headerText="Nombres del Empleado" sortBy="#{emp.nombres}">
                     <h:outputText value="#{emp.nombres} #{emp.apellidos}"/>
                 </p:column>
 
-                <p:column headerText="Pais">
+                <p:column headerText="Pais" filterBy="#{emp.tbpais.nombrePais}">
                     <h:outputText value="#{emp.tbpais.nombrePais}"/>
                 </p:column>
 
