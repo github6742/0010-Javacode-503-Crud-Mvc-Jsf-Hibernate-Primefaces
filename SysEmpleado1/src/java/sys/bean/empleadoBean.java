@@ -3,8 +3,11 @@ package sys.bean;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.event.ActionEvent;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import sys.dao.empleadoDao;
 import sys.dao.empleadoDaoImpl;
@@ -41,22 +44,35 @@ public class empleadoBean implements Serializable{
         return listar;
     }
     
+    public void preparNuevoEmpleado(ActionEvent actionEvent){
+        empleado = new Tbempleado();
+    }
+    
     public void nuevoEmpleado(){
         empleadoDao eDao = new empleadoDaoImpl();
         eDao.nuevoEmpleado(empleado);
-        empleado = new Tbempleado();
+        FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO,
+                           "Correcto",
+                           "El registro se guardo satisfactorimante"));
+        
     }
     
     public void modificarEmpleado(){
         empleadoDao eDao = new empleadoDaoImpl();
         eDao.modificarEmpleado(empleado);
         empleado = new Tbempleado();
+        FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO,
+                           "Correcto",
+                           "El registro se modifico satisfactorimante"));
     }
     
     public void eliminarEmpleado(){
         empleadoDao eDao = new empleadoDaoImpl();
         eDao.eliminarEmpleado(empleado);
         empleado = new Tbempleado();
+        FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO,
+                           "Correcto",
+                           "El registro se elimino satisfactorimante"));
     }
 
     public List<SelectItem> getListPaises() {
